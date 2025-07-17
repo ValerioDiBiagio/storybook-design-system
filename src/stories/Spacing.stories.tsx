@@ -8,4 +8,4 @@ const meta: Meta = {
     tags: ["autodocs"]
 };
 
-export defaul meta;
+export default meta;
