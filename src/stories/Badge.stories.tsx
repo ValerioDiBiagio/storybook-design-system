@@ -8,7 +8,10 @@ import { Badge } from "../components/Badge/Badge";
 // Questo oggetto configura come il componente Badge verrà visualizzato in Storybook.
 const meta: Meta<typeof Badge> = {
     title: "Badge",
-    component: Badge
+    component: Badge,
+    parameters: {
+        layout: "centered"
+    },
 }
 
 export default meta;
