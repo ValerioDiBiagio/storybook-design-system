@@ -1,19 +1,24 @@
+/* Applicare il modello di box-sizing "border-box" a tutti gli elementi.*/
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
+
+/* Rimuovere il margine predefinito da tutti gli elementi. */
 * {
     margin: 0;
 }
 
+/* Impostare l'altezza della riga e l'antialiased per il testo all'interno del body.*/
 body {
+
     line-height: 1.25;
     -webkit-font-smoothing: antialiased;
 }
 
-
+/* Rendere questi elementi di tipo blocco, aggiungere una larghezza del 100% */
 img,
 picture,
 video,
@@ -23,7 +28,7 @@ svg {
     max-width: 100%;
 }
 
-
+/* Ereditare la famiglia di font, la dimensione e il colore del font dall'elemento genitore.*/
 :where(input, button, textarea, select) {
     font: inherit;
     color: inherit;
