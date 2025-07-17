@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
+// Definire i metadati per Storybook, come il titolo della storia e le configurazioni di layout.
 const meta: Meta = {
     title: "Atoms/Spacing",
     parameters: {
@@ -11,8 +12,10 @@ const meta: Meta = {
 
 export default meta;
 
+// Definire il tipo per le storie di Storybook basato sui metadati.
 type Story = StoryObj<typeof meta>;
 
+// Componente funzionale React per calcolare e visualizzare il valore di una variabile CSS.
 const SpaceCalc = ({ value }: { value: string }) => {
 
     const spacing = React.useMemo(() => {
@@ -24,6 +27,7 @@ const SpaceCalc = ({ value }: { value: string }) => {
     return <span>{spacing}</span>;
 }
 
+// Componente funzionale React che inserisce stili CSS globali tramite un tag <style>.
 const Style: React.FC = () => {
 
     return (
@@ -68,6 +72,7 @@ const Style: React.FC = () => {
     )
 }
 
+// Definizione della storia "Default" per il componente Spacing in Storybook.
 export const Default: Story = {
     render: () => (
         <>
