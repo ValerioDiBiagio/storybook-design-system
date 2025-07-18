@@ -38,7 +38,7 @@ const Style: React.FC = () => {
                 border: 1px solid #ccc;
                 display: grid;
                 max-width: calc(550rem/16);
-                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-columns: 1fr 4fr 1fr;
                 border-bottom: none;
                 border-radius: 0.5rem;
                 }
@@ -63,7 +63,7 @@ const Style: React.FC = () => {
                 
                 .info {
                 background: magenta;
-                height: 1ch;
+                height: 2ch;
                 width: var(--story-spacing);
                 display: block;
                 }`
