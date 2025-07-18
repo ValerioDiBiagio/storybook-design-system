@@ -1,6 +1,5 @@
 // Importare i tipi Meta e StoryObj dalla libreria React di Storybook
 import type { Meta, StoryObj } from "@storybook/react";
-import { Children } from "react";
 
 // Oggetto di metadati per la storia di Storybook.
 // Questo oggetto configura come il file Thypography verrà visualizzato in Storybook.
