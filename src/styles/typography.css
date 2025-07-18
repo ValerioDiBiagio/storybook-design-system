@@ -3,3 +3,60 @@
 html {
     font-family: "Nunito", Arial, Helvetica, sans-serif;
 }
+
+.font-size-hero {
+    font-size: var(--font-size-hero);
+}
+
+body {
+    font-size: var(--font-size-body);
+}
+
+:where(h1, .font-size-h1) {
+    font-size: var(--font-size-h1);
+    margin-bottom: 0.25em;
+    text-wrap: balance;
+}
+
+:where(h2, .font-size-h2) {
+    font-size: var(--font-size-h2);
+    margin-bottom: 0.25em;
+    text-wrap: balance;
+}
+
+:where(h3, .font-size-h3) {
+    font-size: var(--font-size-h3);
+    margin-bottom: 0.25em;
+    text-wrap: balance;
+}
+
+:where(h4, .font-size-h4) {
+    font-size: var(--font-size-h4);
+    margin-bottom: 0.25em;
+    text-wrap: balance;
+}
+
+:where(h5, .font-size-h5) {
+    font-size: var(--font-size-h5);
+    margin-bottom: 0.25em;
+    text-wrap: balance;
+}
+
+:where(h6, .font-size-h6) {
+    font-size: var(--font-size-h6);
+    margin-bottom: 0.25em;
+    text-wrap: balance;
+}
+
+:where(p, .font-size-body) {
+    font-size: var(--font-size-body);
+    margin-bottom: 1em;
+}
+
+:where(small, .font-size-small) {
+    font-size: var(--font-size-sm);
+}
+
+:where(.font-size-xs) {
+    font-size: var(--font-size-xs);
+}
