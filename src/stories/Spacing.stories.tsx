@@ -33,7 +33,12 @@ const Style: React.FC = () => {
     return (
         <style>
             {
-                `dl {
+                ` h1, p {
+                    text-align: start;
+                    max-width: calc(550rem/16); 
+                }
+                
+                dl {
                 font-size: 1rem;
                 border: 1px solid #ccc;
                 display: grid;
@@ -76,7 +81,11 @@ const Style: React.FC = () => {
 export const Default: Story = {
     render: () => (
         <>
+            <h1>Spacing</h1>
+            <p className="font-size-body">Our spacing variables use a mechanism to ensure that the spacing is scalable accross different screen size. * This is done by using the `clamp()` function. * The minimum viewport width is 400px and the maximum is 1200px.</p>
+
             <Style />
+
             <dl>
                 {['zero', 'xs', 'sm', 'md', 'lg', 'xl'].map((key) => (
                     <React.Fragment key={key}>
