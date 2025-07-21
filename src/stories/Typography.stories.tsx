@@ -13,7 +13,7 @@ const meta: Meta = {
 
 export default meta;
 
-// Definire un tipo 'Story' basato su StoryObj di Storybook,
+// Definire un tipo 'Story' basato su StoryObj di Storybook.
 type Story = StoryObj<typeof meta>;
 
 // Definire la storia 'Default' per il file Typography.

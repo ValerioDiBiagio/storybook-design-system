@@ -1,3 +1,4 @@
+// Importare i tipi Meta e StoryObj dalla libreria React di Storybook
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
