@@ -1,5 +1,6 @@
 // Importare i tipi Meta e StoryObj dalla libreria React di Storybook
 import type { Meta, StoryObj } from '@storybook/react';
+import React, { type ButtonHTMLAttributes } from "react";
 
 // Oggetto di metadati per la storia di Storybook.
 // Questo oggetto configura come il file Colors verrà visualizzato in Storybook.
@@ -12,6 +13,15 @@ export default meta;
 
 // Definire un tipo 'Story' basato su StoryObj di Storybook.
 type Story = StoryObj<typeof meta>;
+
+const ClickToCopy: React.FC<{ value: string } & ButtonHTMLAttributes<HTMLButtonElement>> = ({ value, ...attrs }) => {
+    return (
+        <button className='click-to-copy' {...attrs} style={{ border: "none", cursor: "pointer", ...attrs.style }}
+            onClick={() => navigator.clipboard.writeText(value)}
+            aria-label={`Copy ${value}`}
+        />
+    )
+}
 
 // Definire la storia 'Default' per il file Colors.
 export const Default: Story = {
@@ -40,37 +50,99 @@ export const Default: Story = {
             </style>
 
             <h1>Colors</h1>
-            <h2>Gray</h2>
+            <h2>Primitives</h2>
+            <h3>Gray</h3>
             <div className="container">
                 {Array.from({ length: 10 }).map((_, index) => (
-                    <div className="info"
+                    <ClickToCopy
                         style={{ backgroundColor: `var(--color-gray-${index})` }}
                         key={index}
+                        value={`var(--color-gray-${index}`}
                     />
                 ))}
 
             </div>
 
-            <h2>Red</h2>
+            <h3>Red</h3>
             <div className="container">
                 {Array.from({ length: 10 }).map((_, index) => (
-                    <div className="info"
+                    <ClickToCopy
                         style={{ backgroundColor: `var(--color-red-${index})` }}
                         key={index}
+                        value={`var(--color-red-${index}`}
                     />
                 ))}
 
             </div>
 
-            <h2>Green</h2>
+            <h3>Green</h3>
             <div className="container">
                 {Array.from({ length: 10 }).map((_, index) => (
-                    <div className="info"
+                    <ClickToCopy
                         style={{ backgroundColor: `var(--color-green-${index})` }}
                         key={index}
+                        value={`var(--color-green-${index}`}
                     />
                 ))}
-
             </div>
-        </div>
+
+            <h2>Semantic</h2>
+            <h3>Neutral</h3>
+            <div className='info' style={{
+                backgroundColor: "var(--color-neutral-bcg)",
+                color: "var(--color-neutral-text)",
+                borderColor: "var(--color-neutral-accent)"
+            }}>
+                Per questo box abbiamo usato:{" "}
+                <ClickToCopy value="var(--color-neutral-bcg)">
+                    --color-neutral-bcg
+                </ClickToCopy>
+
+                <ClickToCopy value="var(--color-neutral-text)">
+                    --color-neutral-text
+                </ClickToCopy>
+
+                <ClickToCopy value="var(--color-neutral-accent)">
+                    --color-neutral-accent
+                </ClickToCopy>
+            </div>
+            <h3>Positive</h3>
+            <div className='info' style={{
+                backgroundColor: "var(--color-positive-bcg)",
+                color: "var(--color-positive-text)",
+                borderColor: "var(--color-positive-accent)"
+            }}>
+                Per questo box abbiamo usato:{" "}
+                <ClickToCopy value="var(--color-positive-bcg)">
+                    --color-positive-bcg
+                </ClickToCopy>
+
+                <ClickToCopy value="var(--color-positive-text)">
+                    --color-positive-text
+                </ClickToCopy>
+
+                <ClickToCopy value="var(--color-positive-accent)">
+                    --color-positive-accent
+                </ClickToCopy>
+            </div>
+            <h3>Negative</h3>
+            <div className='info' style={{
+                backgroundColor: "var(--color-negative-bcg)",
+                color: "var(--color-negative-text)",
+                borderColor: "var(--color-negative-accent)"
+            }}>
+                Per questo box abbiamo usato:{" "}
+                <ClickToCopy value="var(--color-negative-bcg)">
+                    --color-negative-bcg
+                </ClickToCopy>
+
+                <ClickToCopy value="var(--color-negative-text)">
+                    --color-negative-text
+                </ClickToCopy>
+
+                <ClickToCopy value="var(--color-negative-accent)">
+                    --color-negative-accent
+                </ClickToCopy>
+            </div>
+        </div >
 }
