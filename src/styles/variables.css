@@ -21,4 +21,38 @@
     --font-size-xs: 0.75rem;
 
 
+    /* colors */
+    --color-gray-0: #f8f9fa;
+    --color-gray-01: #f1f3f5;
+    --color-gray-02: #e9ecef;
+    --color-gray-03: #dee2e6;
+    --color-gray-04: #ced4da;
+    --color-gray-05: #adb5bd;
+    --color-gray-06: #868e96;
+    --color-gray-07: #495057;
+    --color-gray-08: #343a40;
+    --color-gray-09: #212529;
+    --color-gray-10: #000;
+
+    --color-red-0: #fff5f5;
+    --color-red-01: #ffe3e3;
+    --color-red-02: #ffc9c9;
+    --color-red-03: #ffa8a8;
+    --color-red-04: #ff8787;
+    --color-red-05: #ff6b6b;
+    --color-red-06: #fa5252;
+    --color-red-07: #f03e3e;
+    --color-red-08: #e03131;
+    --color-red-09: #c92a2a;
+
+    --color-green-0: #ebfbee;
+    --color-green-01: #d3f9d8;
+    --color-green-02: #b2f2bb;
+    --color-green-03: #8ce99a;
+    --color-green-04: #69db7c;
+    --color-green-05: #51cf66;
+    --color-green-06: #40c057;
+    --color-green-07: #37b24d;
+    --color-green-08: #2f9e44;
+    --color-green-09: #2b8a3e;
 }
