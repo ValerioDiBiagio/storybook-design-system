@@ -3,7 +3,7 @@
     background-color: var(--color-gray-1);
     font-size: var(--font-size-xs);
     color: var(--color-gray-15);
-    padding: 8px;
+    padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: 100vw;
     font-weight: 800;
 
