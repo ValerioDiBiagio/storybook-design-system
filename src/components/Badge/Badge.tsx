@@ -1,6 +1,7 @@
 // Importa il tipo 'React' dalla libreria React.
 import type React from "react";
-import "./Badge.css";
+import root from "react-shadow";
+import css from "./Badge.css?raw";
 
 // Definire un tipo TypeScript chiamato `BadgeProps`.
 type BadgeProps = {
@@ -15,7 +16,12 @@ export const Badge: React.FC<BadgeProps> = ({
     ...attrs
 
 }) => {
-    return <div className={`badge ${variant}`} {...attrs}>
-        {children}
-    </div>
+    return (
+        <root.div>
+            <style>{css}</style>
+            <div className={`badge ${variant}`} {...attrs}>
+                {children}
+            </div>
+        </root.div>
+    )
 }
