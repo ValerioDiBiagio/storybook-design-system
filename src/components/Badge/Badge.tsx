@@ -2,7 +2,7 @@
 import type React from "react";
 import "./Badge.css";
 
-
+// Definire un tipo TypeScript chiamato `BadgeProps`.
 type BadgeProps = {
     children: React.ReactNode;
     variant?: "neutral" | "positive" | "negative";
@@ -18,5 +18,4 @@ export const Badge: React.FC<BadgeProps> = ({
     return <div className={`badge ${variant}`} {...attrs}>
         {children}
     </div>
-
 }

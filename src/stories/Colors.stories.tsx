@@ -106,25 +106,6 @@ export const Default: Story = {
                     --color-neutral-accent
                 </ClickToCopy>
             </div>
-            <h3>Positive</h3>
-            <div className='info' style={{
-                backgroundColor: "var(--color-positive-bcg)",
-                color: "var(--color-positive-text)",
-                borderColor: "var(--color-positive-accent)"
-            }}>
-                Per questo box abbiamo usato:{" "}
-                <ClickToCopy value="var(--color-positive-bcg)">
-                    --color-positive-bcg
-                </ClickToCopy>
-
-                <ClickToCopy value="var(--color-positive-text)">
-                    --color-positive-text
-                </ClickToCopy>
-
-                <ClickToCopy value="var(--color-positive-accent)">
-                    --color-positive-accent
-                </ClickToCopy>
-            </div>
             <h3>Negative</h3>
             <div className='info' style={{
                 backgroundColor: "var(--color-negative-bcg)",
@@ -142,6 +123,25 @@ export const Default: Story = {
 
                 <ClickToCopy value="var(--color-negative-accent)">
                     --color-negative-accent
+                </ClickToCopy>
+            </div>
+            <h3>Positive</h3>
+            <div className='info' style={{
+                backgroundColor: "var(--color-positive-bcg)",
+                color: "var(--color-positive-text)",
+                borderColor: "var(--color-positive-accent)"
+            }}>
+                Per questo box abbiamo usato:{" "}
+                <ClickToCopy value="var(--color-positive-bcg)">
+                    --color-positive-bcg
+                </ClickToCopy>
+
+                <ClickToCopy value="var(--color-positive-text)">
+                    --color-positive-text
+                </ClickToCopy>
+
+                <ClickToCopy value="var(--color-positive-accent)">
+                    --color-positive-accent
                 </ClickToCopy>
             </div>
         </div >
