@@ -9,6 +9,12 @@ import { Badge } from "../components/Badge/Badge";
 const meta: Meta<typeof Badge> = {
     title: "Badge",
     component: Badge,
+    argTypes: {
+        children: { control: "text" }
+    },
+    args: {
+        children: "Badge"
+    },
     parameters: {
         layout: "centered"
     },
@@ -22,5 +28,18 @@ type Story = StoryObj<typeof meta>;
 
 // Definire la storia 'Default' per il componente Badge.
 export const Default: Story = {
-    render: () => <Badge />
+    render: ({ children, variant }) => <Badge variant={variant} >{children}</Badge>
 };
+
+// Definire la storia di tutte le versioni dei Badge.
+export const AllBadges: Story = {
+    render: ({ children }) =>
+        <>
+            <div style={{ display: "flex", gap: "var(--spacing-sm)" }}>
+                <Badge variant="neutral" >{children}</Badge>
+                <Badge variant="positive" >{children}</Badge>
+                <Badge variant="negative" >{children}</Badge>
+            </div>
+        </>
+};
+
