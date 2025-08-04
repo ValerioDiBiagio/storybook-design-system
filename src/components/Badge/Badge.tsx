@@ -17,11 +17,11 @@ export const Badge: React.FC<BadgeProps> = ({
 
 }) => {
     return (
-        <root.div>
+        <root.span>
             <style>{css}</style>
-            <div className={`badge ${variant}`} {...attrs}>
+            <span className={`badge ${variant}`} {...attrs}>
                 {children}
-            </div>
-        </root.div>
+            </span>
+        </root.span>
     )
 }

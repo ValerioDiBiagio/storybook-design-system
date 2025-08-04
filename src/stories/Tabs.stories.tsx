@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Tabs } from "../components/Tabs/Tabs";
 import root from "react-shadow";
+import { Badge } from "../components/Badge/Badge";
 
 // Definisce i metadati per il componente Tabs in Storybook
 const meta: Meta<typeof Tabs> = {
@@ -45,13 +46,39 @@ export const Default: Story = {
     render: () => (
         <Tabs>
             <Tabs.Item label="Label 1">
-                <Skeleton>Contenuto tab 1</Skeleton>
+                <Skeleton>Tab content 1</Skeleton>
             </Tabs.Item>
             <Tabs.Item label="Label 2">
-                <Skeleton>Contenuto tab 2</Skeleton>
+                <Skeleton>Tab content 2</Skeleton>
             </Tabs.Item>
             <Tabs.Item label="Label 3">
-                <Skeleton>Contenuto tab 3</Skeleton>
+                <Skeleton>Tab content 3</Skeleton>
+            </Tabs.Item><Tabs.Item
+                label={
+                    <span>
+                        Label 3 <Badge>New</Badge>
+                    </span>
+                }
+            >
+                <Skeleton>Tab content 3</Skeleton>
+            </Tabs.Item>
+            <Tabs.Item
+                label={
+                    <span>
+                        Label 4 <Badge variant="positive">Positive</Badge>
+                    </span>
+                }
+            >
+                <Skeleton>Tab content 4</Skeleton>
+            </Tabs.Item>
+            <Tabs.Item
+                label={
+                    <span>
+                        Label 5 <Badge variant="negative">Negative</Badge>
+                    </span>
+                }
+            >
+                <Skeleton>Tab content 5</Skeleton>
             </Tabs.Item>
         </Tabs>
     ),
