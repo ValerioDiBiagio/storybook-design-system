@@ -1,0 +1,18 @@
+<style>
+    /* Imposta il tema colore predefinito del body su 'light'. */
+    body {
+        color-scheme: light;
+
+        /* Quando il body ha la classe 'dark-theme', imposta il tema colore su 'dark'. */
+        &:where(.dark-theme) {
+            color-scheme: dark;
+        }
+    }
+
+    /* Applica stili di colore del testo e dello sfondo al 'body' e specificamente all'area di preview di Storybook */
+    body,
+    .sbdocs-preview.sbdocs-preview {
+        color: var(--color-neutral-text);
+        background-color: var(--color-neutral-bcg);
+    }
+</style>
