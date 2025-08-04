@@ -7,7 +7,7 @@ import { Badge } from "../components/Badge/Badge";
 // Oggetto di metadati per la storia di Storybook.
 // Questo oggetto configura come il componente Badge verrà visualizzato in Storybook.
 const meta: Meta<typeof Badge> = {
-    title: "Badge",
+    title: "Components/Badge",
     component: Badge,
     argTypes: {
         children: { control: "text" }
