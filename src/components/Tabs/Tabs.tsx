@@ -5,7 +5,6 @@ import { List } from "./Tabs.List";
 import { TabsContext } from "./Tabs.Context";
 import { Tab } from "./Tabs.Tab";
 import root from "react-shadow";
-
 import css from "./Tabs.css?raw";
 import { GlobalStyles } from "../GlobalStyles";
 
