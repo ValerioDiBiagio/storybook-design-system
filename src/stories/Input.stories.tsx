@@ -9,6 +9,7 @@ const meta: Meta = {
     args: {
         label: "Label",
     },
+    tags: ["autodocs"]
 };
 
 export default meta;
@@ -16,9 +17,32 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    render: () => <Input options={[
-        { label: "Option 1", value: "1" },
-        { label: "Option 2", value: "2" },
-    ]}
-        kind="select" label="Label" placeholder="placeholder" />
-}
+    render: ({ label }) => <Input label={label} kind="text" />,
+};
+
+export const Select: Story = {
+    render: ({ label }) => (
+        <Input
+            label={label}
+            options={[
+                { label: "Option 1", value: "1" },
+                { label: "Option 2", value: "2" },
+            ]}
+            kind="select"
+        />
+    ),
+};
+
+export const Radio: Story = {
+    render: ({ label }) => (
+        <Input
+            label={label}
+            options={[
+                { label: "Option 1", value: "1" },
+                { label: "Option 2", value: "2" },
+            ]}
+            kind="radio"
+            name="Mimmo"
+        />
+    ),
+};

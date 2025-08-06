@@ -24,12 +24,19 @@ type SelectProps = {
     placeholder?: string;
 } & React.SelectHTMLAttributes<HTMLSelectElement>;
 
-type GeneralInputProps = (InputProps | SelectProps) & {
+type RadioProps = {
+    kind: "radio";
+    options: { label: string; value: string }[];
+    placeholder?: never;
+    name: string;
+} & React.InputHTMLAttributes<HTMLInputElement>;
+
+type GeneralInputProps = (InputProps | SelectProps | RadioProps) & {
     label: React.ReactNode;
 };
 
-export const InternalInput: React.FC<InputProps | SelectProps> = (
-    props
+export const InternalInput: React.FC<InputProps | SelectProps | RadioProps> = (
+    props,
 ) => {
     switch (props.kind) {
         case "select":
@@ -47,6 +54,17 @@ export const InternalInput: React.FC<InputProps | SelectProps> = (
                     ))}
                 </select>
             );
+        case "radio":
+            return (
+                <>
+                    {props.options.map((option) => (
+                        <label key={option.value}>
+                            <input type="radio" {...props} value={option.value} />
+                            {option.label}
+                        </label>
+                    ))}
+                </>
+            );
         default:
             return <input type={props.kind} {...props} />;
     }
@@ -54,11 +72,14 @@ export const InternalInput: React.FC<InputProps | SelectProps> = (
 
 export const Input: React.FC<GeneralInputProps> = ({ label, id, ...props }) => {
     const defaultId = React.useId() || id;
-
     return (
         <>
-            <label htmlFor={defaultId}>{label}</label>
+            {props.kind === "radio" ? (
+                <span>{label}</span>
+            ) : (
+                <label htmlFor={defaultId}>{label}</label>
+            )}
             <InternalInput {...props} id={defaultId} />
         </>
-    )
+    );
 };
