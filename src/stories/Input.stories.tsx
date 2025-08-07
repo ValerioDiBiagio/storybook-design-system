@@ -34,7 +34,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     render: ({ label }) => (
         <div>
-            <Input label={label} kind="text" />
+            <Input label={label} kind="text" icon="Book" />
             <Input
                 label={label}
                 // Qui passiamo l'array di opzioni specifico per un select.

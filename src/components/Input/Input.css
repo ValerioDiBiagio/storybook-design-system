@@ -1,7 +1,7 @@
 .container {
     display: grid;
     grid-template-rows: repeat(3, auto);
-    grid-template-columns: calc(42rem / 16) auto;
+    grid-template-columns: calc(24rem / 16) auto calc(24rem / 16);
 
     &:where(.radio) {
         display: flex;
@@ -9,21 +9,42 @@
     }
 
     margin-bottom: 1rem;
+    position: relative;
+}
+
+.icon {
+    grid-row: 2/3;
+    grid-column: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(24rem / 16);
+    pointer-events: none;
+}
+
+svg {
+    height: 1rem;
+    width: 1rem;
 }
 
 :is(label, .label) {
-    color: light-dark(var(--color-gray-12), var(--color-gray-1));
+    color: light-dark(var(--color-gray-9), var(--color-gray-1));
     grid-row: 1/2;
     grid-column: 1/4;
     font-weight: 800;
     cursor: pointer;
     font-size: var(--font-size-sm);
     margin-bottom: 0.25em;
+
 }
 
 input:not([type="radio"]),
 select {
     grid-row: 2/3;
     grid-column: 1/4;
+    min-height: calc(16rem / 16);
+}
 
+.container:has(.icon) input:not([type="radio"]) {
+    padding-right: calc(24rem / 16);
 }

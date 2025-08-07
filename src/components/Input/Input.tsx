@@ -23,6 +23,7 @@ import * as Icon from 'react-feather';
 // Estende `React.InputHTMLAttributes<HTMLInputElement>` per includere tutte le props standard di un `<input>`.
 type InputProps = {
     kind: "text" | "email" | "password";
+    icon?: keyof typeof Icon;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 // Definisce le props per l'input di tipo "select".
@@ -31,6 +32,7 @@ type SelectProps = {
     kind: "select";
     options: { label: string; value: string }[];
     placeholder?: string;
+    icon?: never;
 } & React.SelectHTMLAttributes<HTMLSelectElement>;
 
 // Definisce le props per gli input di tipo "radio".
@@ -41,12 +43,14 @@ type RadioProps = {
     options: { label: string; value: string }[];
     placeholder?: never;
     name: string;
+    icon?: never;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 // Unisce tutti i tipi di props (`InputProps`, `SelectProps`, `RadioProps`)
 // e aggiunge la prop `label` che sarà usata nel componente `Input`.
 type GeneralInputProps = (InputProps | SelectProps | RadioProps) & {
     label: React.ReactNode;
+    icon?: keyof typeof Icon;
 };
 
 // ### Componente InternalInput
@@ -104,13 +108,13 @@ export const InternalInput: React.FC<InputProps | SelectProps | RadioProps> = (p
 
 // `Input` è il componente pubblico che incapsula `InternalInput`.
 // È responsabile di gestire l'etichetta (`label`) e l'ID dell'input.
-export const Input: React.FC<GeneralInputProps> = ({ label, id, className, ...props }) => {
+export const Input: React.FC<GeneralInputProps> = ({ label, id, className, icon, ...props }) => {
     // Utilizza `React.useId()` per generare un ID univoco e stabile se `id` non è fornito.
     const defaultId = React.useId() || id;
+    const IconComponent = icon ? Icon[icon] : null
 
     return (
         <root.div>
-            <Icon.Camera />
             <style>{css}</style>
             <div className={`${className ?? ''} container ${props.kind}`}>
                 {props.kind === "radio" ? (
@@ -120,6 +124,7 @@ export const Input: React.FC<GeneralInputProps> = ({ label, id, className, ...pr
                 )}
                 {/* Passa tutte le props rimanenti a `InternalInput` e aggiunge l'ID generato. */}
                 <InternalInput {...props} id={defaultId} />
+                {IconComponent && <div className="icon"><IconComponent /></div>}
             </div>
         </root.div>
     );
