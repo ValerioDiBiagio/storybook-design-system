@@ -13,6 +13,8 @@
 */
 
 import React from "react";
+import root from "react-shadow";
+import css from "./Input.css?raw";
 
 // ### Tipi di proprietà per i diversi tipi di input
 
@@ -106,7 +108,8 @@ export const Input: React.FC<GeneralInputProps> = ({ label, id, ...props }) => {
     const defaultId = React.useId() || id;
 
     return (
-        <>
+        <root.div>
+            <style>{css}</style>
             {props.kind === "radio" ? (
                 <span>{label}</span>
             ) : (
@@ -114,6 +117,6 @@ export const Input: React.FC<GeneralInputProps> = ({ label, id, ...props }) => {
             )}
             {/* Passa tutte le props rimanenti a `InternalInput` e aggiunge l'ID generato. */}
             <InternalInput {...props} id={defaultId} />
-        </>
+        </root.div>
     );
 };

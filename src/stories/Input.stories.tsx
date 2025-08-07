@@ -31,8 +31,37 @@ type Story = StoryObj<typeof meta>;
 
 // ### Storie
 
-// `Default` è la prima storia, che mostra l'input di testo standard.
 export const Default: Story = {
+    render: ({ label }) => (
+        <div>
+            <Input label={label} kind="text" />
+            <Input
+                label={label}
+                // Qui passiamo l'array di opzioni specifico per un select.
+                options={[
+                    { label: "Option 1", value: "1" },
+                    { label: "Option 2", value: "2" },
+                ]}
+                kind="select"
+            />
+            <Input
+                label={label}
+                // Passiamo un array di opzioni, come per il select.
+                options={[
+                    { label: "Option 1", value: "1" },
+                    { label: "Option 2", value: "2" },
+                ]}
+                kind="radio"
+                // La prop `name` è obbligatoria per raggruppare i radio button.
+                // Permette di selezionarne solo uno all'interno del gruppo.
+                name="Mimmo"
+            />
+        </div>
+    )
+};
+
+// `Default` è la prima storia, che mostra l'input di testo standard.
+export const InputStory: Story = {
     // `render` è la funzione che Storybook usa per renderizzare il componente.
     // Riceve le props (`label` in questo caso) e restituisce il componente React.
     render: ({ label }) => <Input label={label} kind="text" />,
@@ -50,6 +79,7 @@ export const Select: Story = {
             ]}
             kind="select"
         />
+
     ),
 };
 

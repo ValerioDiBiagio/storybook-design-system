@@ -50,7 +50,7 @@ export const List: React.FC<TablistProp> = ({ tabsLabels }) => {
 
     return (
         // Il contenitore della lista delle tab, con un gestore per gli eventi della tastiera.
-        <div className="tablist" onKeyDownCapture={handleKeyDown}>
+        <div className="tablist" role="tablist" onKeyDownCapture={handleKeyDown}>
             {tabsLabels.map(({ label, tabId }) => (
                 <Button key={tabId} tabId={tabId}>
                     {label}
