@@ -15,6 +15,7 @@
 import React from "react";
 import root from "react-shadow";
 import css from "./Input.css?raw";
+import * as Icon from 'react-feather';
 
 // ### Tipi di proprietà per i diversi tipi di input
 
@@ -103,20 +104,23 @@ export const InternalInput: React.FC<InputProps | SelectProps | RadioProps> = (p
 
 // `Input` è il componente pubblico che incapsula `InternalInput`.
 // È responsabile di gestire l'etichetta (`label`) e l'ID dell'input.
-export const Input: React.FC<GeneralInputProps> = ({ label, id, ...props }) => {
+export const Input: React.FC<GeneralInputProps> = ({ label, id, className, ...props }) => {
     // Utilizza `React.useId()` per generare un ID univoco e stabile se `id` non è fornito.
     const defaultId = React.useId() || id;
 
     return (
         <root.div>
+            <Icon.Camera />
             <style>{css}</style>
-            {props.kind === "radio" ? (
-                <span>{label}</span>
-            ) : (
-                <label htmlFor={defaultId}>{label}</label>
-            )}
-            {/* Passa tutte le props rimanenti a `InternalInput` e aggiunge l'ID generato. */}
-            <InternalInput {...props} id={defaultId} />
+            <div className={`${className ?? ''} container ${props.kind}`}>
+                {props.kind === "radio" ? (
+                    <span>{label}</span>
+                ) : (
+                    <label htmlFor={defaultId}>{label}</label>
+                )}
+                {/* Passa tutte le props rimanenti a `InternalInput` e aggiunge l'ID generato. */}
+                <InternalInput {...props} id={defaultId} />
+            </div>
         </root.div>
     );
 };
