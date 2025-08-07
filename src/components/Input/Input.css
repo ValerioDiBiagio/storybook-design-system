@@ -2,6 +2,7 @@
     display: grid;
     grid-template-rows: repeat(3, auto);
     grid-template-columns: calc(24rem / 16) auto calc(24rem / 16);
+    padding: 0.25em;
 
     &:where(.radio) {
         display: flex;
@@ -20,7 +21,13 @@
     justify-content: center;
     width: calc(24rem / 16);
     pointer-events: none;
+
+    &:where(.left) {
+        grid-column: 1/2;
+    }
 }
+
+
 
 svg {
     height: 1rem;
@@ -35,16 +42,49 @@ svg {
     cursor: pointer;
     font-size: var(--font-size-sm);
     margin-bottom: 0.25em;
+}
 
+.input-container {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: 2/3;
+    grid-column: 1/4;
+    border: 1px solid light-dark(var(--color-gray-9), var(--color-gray-1));
+    border-radius: 0.25rem;
+
+    &:has(input[type="radio"]) {
+        display: flex;
+        gap: var(--spacing-md);
+        border: none;
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+    }
 }
 
 input:not([type="radio"]),
 select {
-    grid-row: 2/3;
-    grid-column: 1/4;
-    min-height: calc(16rem / 16);
+    min-height: calc(28rem / 16);
+    border: none;
+    margin-bottom: 0.25em;
 }
 
 .container:has(.icon) input:not([type="radio"]) {
     padding-right: calc(24rem / 16);
+}
+
+.container:has(.icon.left) input:not([type="radio"]) {
+    padding-left: calc(24rem / 16);
+    padding-right: 0.25;
+}
+
+:where(input, select):focus {
+    outline: none;
+}
+
+.input-container:has(:where(input, select):focus-visible) {
+    outline: 2px solid light-dark(var(--color-gray-9), var(--color-gray-1));
 }
