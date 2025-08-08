@@ -56,6 +56,7 @@ type GeneralInputProps = (InputProps | SelectProps | RadioProps) & {
     label: React.ReactNode;
     icon?: keyof typeof Icon;
     errorText?: React.ReactNode;
+    isInvalid?: boolean;
 };
 
 // ### Componente InternalInput
@@ -113,7 +114,7 @@ export const InternalInput: React.FC<InputProps | SelectProps | RadioProps> = (p
 
 // `Input` è il componente pubblico che incapsula `InternalInput`.
 // È responsabile di gestire l'etichetta (`label`) e l'ID dell'input.
-export const Input: React.FC<GeneralInputProps> = ({ label, id, className, icon, iconPosition, ...props }) => {
+export const Input: React.FC<GeneralInputProps> = ({ label, id, className, icon, iconPosition, errorText, isInvalid, ...props }) => {
     // Utilizza `React.useId()` per generare un ID univoco e stabile se `id` non è fornito.
     const defaultId = React.useId() || id;
     const IconComponent = icon ? Icon[icon] : null
@@ -122,7 +123,7 @@ export const Input: React.FC<GeneralInputProps> = ({ label, id, className, icon,
         <root.div>
             <GlobalStyles />
             <style>{css}</style>
-            <div className={`${className ?? ''} container ${props.kind}`}>
+            <div className={`${className ?? ""} container ${props.kind} ${isInvalid ? "is-invalid" : ""}`}>
                 {props.kind === "radio" ? (
                     <span className="label">{label}</span>
                 ) : (
@@ -136,6 +137,7 @@ export const Input: React.FC<GeneralInputProps> = ({ label, id, className, icon,
                         </div>
                     )}
                 </div>
+                {errorText && <span className="error-text">{errorText}</span>}
             </div>
         </root.div>
     );

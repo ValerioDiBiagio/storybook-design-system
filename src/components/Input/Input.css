@@ -1,40 +1,22 @@
+/* Stile per il contenitore principale dell'input */
 .container {
     --accent-color: light-dark(var(--color-gray-9), var(--color-gray-1));
+    --bcg-color: light-dark(white, var(--color-gray-12));
     display: grid;
     grid-template-rows: repeat(3, auto);
     grid-template-columns: calc(24rem / 16) auto calc(24rem / 16);
+    margin-bottom: 1em;
+    position: relative;
     padding: 0.25em;
+    border-radius: 0.25em;
 
     &:where(.radio) {
         display: flex;
         flex-direction: column;
     }
-
-    margin-bottom: 1rem;
-    position: relative;
 }
 
-.icon {
-    grid-row: 2/3;
-    grid-column: 3/4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(24rem / 16);
-    pointer-events: none;
-
-    &:where(.left) {
-        grid-column: 1/2;
-    }
-}
-
-
-
-svg {
-    height: 1rem;
-    width: 1rem;
-}
-
+/* Stile per l'etichetta dell'input */
 :is(label, .label) {
     color: light-dark(var(--color-gray-9), var(--color-gray-1));
     grid-row: 1/2;
@@ -45,32 +27,77 @@ svg {
     margin-bottom: 0.25em;
 }
 
+
+/* Stile per gli input e i select */
 .input-container {
     display: grid;
     grid-template-rows: subgrid;
     grid-row: 2/3;
     grid-column: 1/4;
-    border: 1px solid light-dark(var(--color-gray-9), var(--color-gray-1));
-    border-radius: 0.25rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 0.25em;
+
 
     &:has(input[type="radio"]) {
         display: flex;
         gap: var(--spacing-md);
         border: none;
-    }
 
-    label {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-xs);
+        label {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
     }
 }
 
 input:not([type="radio"]),
 select {
     min-height: calc(28rem / 16);
+    /* Altezza minima uniforme */
     border: none;
-    margin-bottom: 0.25em;
+    /* Rimuove il bordo di default */
+    border-radius: 0.25em 0 0 0.25rem;
+    /* Arrotonda gli angoli */
+    background-color: var(--bcg-color);
+    /* Colore di sfondo dinamico */
+}
+
+select {
+    border-radius: 0.25em
+}
+
+:where(input, select):focus {
+    outline: none;
+}
+
+.input-container:has(:where(input, select):focus-visible) {
+    outline: 2px solid light-dark(var(--color-gray-9), var(--color-gray-1));
+    border-radius: 0.25em;
+}
+
+/* Stile per le icone all'interno dell'input */
+.icon {
+    grid-row: 2/3;
+    grid-column: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(24rem / 16);
+    pointer-events: none;
+    background-color: var(--bcg-color);
+    border-radius: 0 0.25em 0.25em 0;
+
+
+    &:where(.left) {
+        grid-column: 1/2;
+        border-radius: 0.25em 0 0 0.25em;
+    }
+
+    >svg {
+        width: 1rem;
+        height: 1rem;
+    }
 }
 
 .container:has(.icon) input:not([type="radio"]) {
@@ -79,17 +106,39 @@ select {
 
 .container:has(.icon.left) input:not([type="radio"]) {
     padding-left: calc(24rem / 16);
-    padding-right: 0.25;
+    padding-right: 0.25em;
 }
 
-:where(input, select):focus {
-    outline: none;
+
+/* Stile per il testo di errore sotto l'input */
+.error-text {
+    color: light-dark(var(--color-red-9), var(--color-red-4));
+    font-size: var(--font-size-sm);
+    margin-top: 0.5em;
+    grid-row: 3/4;
+    grid-column: 1/4;
+    display: none;
 }
 
-.input-container:has(:where(input, select):focus-visible) {
-    outline: 2px solid var(--accent-color);
+.container:where(.is-invalid) {
+    --accent-color: var(--color-red-9);
+
+    .error-text {
+        display: block;
+    }
 }
 
-.container:has(input:user-invalid, select:user-invalid) {
-    --accent-color: var(--color-red-9)
+
+/* Stile per gli input disabilitati */
+.container:has([disabled]) {
+    --accent-color: light-dark(var(--color-gray-1), var(--color-gray-12));
+    --bcg-color: light-dark(var(--color-gray-1), var(--color-gray-9));
+
+    .icon svg {
+        opacity: 0.5;
+    }
+
+    .icon svg {
+        opacity: 0.5;
+    }
 }

@@ -17,6 +17,8 @@ const meta: Meta = {
     // In questo caso, ogni storia avrà una `label` con il testo "Label" a meno che non venga sovrascritta.
     args: {
         label: "Label",
+        isInvalid: false,
+        disabled: false
     },
 
     // `tags: ["autodocs"]` abilita la generazione automatica della documentazione
@@ -32,10 +34,10 @@ type Story = StoryObj<typeof meta>;
 // ### Storie
 
 export const Default: Story = {
-    render: ({ label }) => (
+    render: ({ label, isInvalid, disabled }) => (
         <div>
-            <Input errorText="Invalid email" placeholder="Placeholder" label={label} iconPosition="left" kind="email" icon="Book" />
-            <Input
+            <Input disabled={disabled} isInvalid={isInvalid} errorText="Invalid email" label={label} iconPosition="right" kind="email" icon="Book" />
+            <Input isInvalid={isInvalid}
                 label={label}
                 // Qui passiamo l'array di opzioni specifico per un select.
                 options={[
@@ -43,8 +45,9 @@ export const Default: Story = {
                     { label: "Option 2", value: "2" },
                 ]}
                 kind="select"
+                disabled={disabled}
             />
-            <Input
+            <Input isInvalid={isInvalid}
                 label={label}
                 // Passiamo un array di opzioni, come per il select.
                 options={[
@@ -55,6 +58,8 @@ export const Default: Story = {
                 // La prop `name` è obbligatoria per raggruppare i radio button.
                 // Permette di selezionarne solo uno all'interno del gruppo.
                 name="Mimmo"
+                disabled={disabled}
+                errorText="Invalid selection"
             />
         </div>
     )
@@ -69,8 +74,8 @@ export const InputStory: Story = {
 
 // `Select` mostra l'input di tipo select (menu a tendina).
 export const Select: Story = {
-    render: ({ label }) => (
-        <Input
+    render: ({ label, isInvalid, disabled }) => (
+        <Input isInvalid={isInvalid}
             label={label}
             // Qui passiamo l'array di opzioni specifico per un select.
             options={[
@@ -78,6 +83,7 @@ export const Select: Story = {
                 { label: "Option 2", value: "2" },
             ]}
             kind="select"
+            disabled={disabled}
         />
 
     ),
@@ -85,8 +91,8 @@ export const Select: Story = {
 
 // `Radio` mostra l'input di tipo radio (pulsanti a scelta singola).
 export const Radio: Story = {
-    render: ({ label }) => (
-        <Input
+    render: ({ label, isInvalid, disabled }) => (
+        <Input isInvalid={isInvalid}
             label={label}
             // Passiamo un array di opzioni, come per il select.
             options={[
@@ -97,6 +103,8 @@ export const Radio: Story = {
             // La prop `name` è obbligatoria per raggruppare i radio button.
             // Permette di selezionarne solo uno all'interno del gruppo.
             name="Mimmo"
+            disabled={disabled}
+            errorText="Invalid email"
         />
     ),
 };
