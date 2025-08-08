@@ -55,6 +55,7 @@ type RadioProps = {
 type GeneralInputProps = (InputProps | SelectProps | RadioProps) & {
     label: React.ReactNode;
     icon?: keyof typeof Icon;
+    errorText?: React.ReactNode;
 };
 
 // ### Componente InternalInput
